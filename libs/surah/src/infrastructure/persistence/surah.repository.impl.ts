@@ -13,7 +13,7 @@ export class SurahRepositoryImpl implements ISurahRepository {
     private readonly repository: Repository<SurahOrmEntity>,
   ) {}
 
-  async findById(id: string): Promise<Surah | null> {
+  async findById(id: number): Promise<Surah | null> {
     const entity = await this.repository.findOne({ where: { id } });
     return entity ? SurahMapper.toDomain(entity) : null;
   }
@@ -47,11 +47,11 @@ export class SurahRepositoryImpl implements ISurahRepository {
     return SurahMapper.toDomain(saved);
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: number): Promise<void> {
     await this.repository.softDelete(id);
   }
 
-  async existsById(id: string): Promise<boolean> {
+  async existsById(id: number): Promise<boolean> {
     const count = await this.repository.count({ where: { id } });
     return count > 0;
   }

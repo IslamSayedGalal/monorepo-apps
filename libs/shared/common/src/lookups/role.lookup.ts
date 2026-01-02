@@ -1,4 +1,4 @@
-import { Role } from '../enums/role.enum';
+import { Role } from '../enums/users/role.enum';
 
 export interface RoleLookup {
   name: Role;
@@ -23,4 +23,3 @@ export const ROLES_DATA: RoleLookup[] = [
     description: 'Anonymous user with limited access',
   },
 ];
-

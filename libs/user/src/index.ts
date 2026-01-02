@@ -1,7 +1,3 @@
-// Presentation
-export * from './presentation/user.module';
-export * from './presentation/controllers/user.controller';
-
 // Application
 export * from './application/dto/create-user.dto';
 export * from './application/dto/update-user.dto';
@@ -22,4 +18,3 @@ export * from './domain/repositories/user.repository';
 export * from './infrastructure/persistence/typeorm/user.orm-entity';
 export * from './infrastructure/persistence/mappers/user.mapper';
 export * from './infrastructure/persistence/user.repository.impl';
-

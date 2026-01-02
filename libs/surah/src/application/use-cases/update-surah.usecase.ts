@@ -14,7 +14,7 @@ export class UpdateSurahUseCase {
     private readonly surahRepository: ISurahRepository,
   ) {}
 
-  async execute(id: string, dto: UpdateSurahDto): Promise<Surah> {
+  async execute(id: number, dto: UpdateSurahDto): Promise<Surah> {
     const surah = await this.surahRepository.findById(id);
 
     if (!surah) {

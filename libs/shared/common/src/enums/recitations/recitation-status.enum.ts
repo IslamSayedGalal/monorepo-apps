@@ -3,4 +3,3 @@ export enum RecitationStatus {
   APPROVED = 'APPROVED',
   REJECTED = 'REJECTED',
 }
-

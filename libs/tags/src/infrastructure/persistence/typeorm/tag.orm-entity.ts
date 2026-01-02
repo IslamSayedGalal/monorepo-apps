@@ -3,17 +3,20 @@ import { BaseEntity } from '@my-workspace/shared-database';
 
 @Entity('tags')
 export class TagOrmEntity extends BaseEntity {
-  @Column({ length: 50 })
+  @Column({ name: 'name', length: 50 })
   name!: string;
 
   @Index({ unique: true })
-  @Column({ length: 60 })
+  @Column({ name: 'slug', length: 60 })
   slug!: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ name: 'description', type: 'text', nullable: true })
   description?: string;
 
-  @Column({ length: 7, nullable: true })
-  color?: string;
-}
+  @Index({ unique: true })
+  @Column({ name: 'code', length: 50 })
+  code!: string;
 
+  @Column({ name: 'is_active', default: true })
+  isActive!: boolean;
+}

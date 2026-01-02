@@ -1,8 +1,8 @@
-import { RecitationStatus } from '../enums/recitation-status.enum';
+import { RecitationStatus } from '@my-workspace/shared-common';
 import { RecitationTitle } from '../value-objects/recitation-title.vo';
 
 export interface RecitationProps {
-  id?: string;
+  id?: number;
   title: RecitationTitle;
   recitationUrl: string;
   coverUrl?: string;
@@ -15,15 +15,15 @@ export interface RecitationProps {
   status: RecitationStatus;
   rejectionReason?: string;
   actionDate?: Date;
-  surahId?: string;
-  riwayaId?: string;
-  userId: string;
+  surahId?: number;
+  riwayaId?: number;
+  userId: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 export class Recitation {
-  private readonly _id?: string;
+  private readonly _id?: number;
   private _title: RecitationTitle;
   private _recitationUrl: string;
   private _coverUrl?: string;
@@ -36,9 +36,9 @@ export class Recitation {
   private _status: RecitationStatus;
   private _rejectionReason?: string;
   private _actionDate?: Date;
-  private _surahId?: string;
-  private _riwayaId?: string;
-  private readonly _userId: string;
+  private _surahId?: number;
+  private _riwayaId?: number;
+  private readonly _userId: number;
   private readonly _createdAt: Date;
   private _updatedAt: Date;
 
@@ -67,7 +67,7 @@ export class Recitation {
 
   // ============ Getters ============
 
-  get id(): string | undefined {
+  get id(): number | undefined {
     return this._id;
   }
 
@@ -119,15 +119,15 @@ export class Recitation {
     return this._actionDate;
   }
 
-  get surahId(): string | undefined {
+  get surahId(): number | undefined {
     return this._surahId;
   }
 
-  get riwayaId(): string | undefined {
+  get riwayaId(): number | undefined {
     return this._riwayaId;
   }
 
-  get userId(): string {
+  get userId(): number | undefined {
     return this._userId;
   }
 
@@ -224,12 +224,12 @@ export class Recitation {
     this.touch();
   }
 
-  updateSurah(surahId: string | undefined): void {
+  updateSurah(surahId: number | undefined): void {
     this._surahId = surahId;
     this.touch();
   }
 
-  updateRiwaya(riwayaId: string | undefined): void {
+  updateRiwaya(riwayaId: number | undefined): void {
     this._riwayaId = riwayaId;
     this.touch();
   }

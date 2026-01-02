@@ -14,7 +14,7 @@ export class UpdateRiwayaUseCase {
     private readonly riwayaRepository: IRiwayaRepository,
   ) { }
 
-  async execute(id: string, dto: UpdateRiwayaDto): Promise<Riwaya> {
+  async execute(id: number, dto: UpdateRiwayaDto): Promise<Riwaya> {
     const riwaya = await this.riwayaRepository.findById(id);
 
     if (!riwaya) {

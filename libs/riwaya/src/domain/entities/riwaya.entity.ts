@@ -1,14 +1,14 @@
 import { RiwayaName } from '../value-objects/riwaya-name.vo';
 
 export interface RiwayaProps {
-  id?: string;
+  id?: number;
   name: RiwayaName;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 export class Riwaya {
-  private readonly _id?: string;
+  private readonly _id?: number;
   private _name: RiwayaName;
   private readonly _createdAt: Date;
   private _updatedAt: Date;
@@ -22,7 +22,7 @@ export class Riwaya {
 
   // ============ Getters ============
 
-  get id(): string | undefined {
+  get id(): number | undefined {
     return this._id;
   }
 

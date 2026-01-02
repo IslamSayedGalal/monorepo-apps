@@ -1,7 +1,3 @@
-// Presentation
-export * from './presentation/surah.module';
-export * from './presentation/controllers/surah.controller';
-
 // Application
 export * from './application/dto/create-surah.dto';
 export * from './application/dto/update-surah.dto';
@@ -18,4 +14,3 @@ export * from './domain/repositories/surah.repository';
 export * from './infrastructure/persistence/typeorm/surah.orm-entity';
 export * from './infrastructure/persistence/mappers/surah.mapper';
 export * from './infrastructure/persistence/surah.repository.impl';
-

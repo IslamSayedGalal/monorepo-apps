@@ -1,5 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 import { idColumn, auditColumns } from '../base/base.columns';
+import { UserStatus } from '@my-workspace/shared-common';
 
 export class CreateUserTable1735315200000 implements MigrationInterface {
   private readonly tableName = 'users';
@@ -33,8 +34,9 @@ export class CreateUserTable1735315200000 implements MigrationInterface {
           {
             name: 'status',
             type: 'enum',
-            enum: ['PENDING', 'ACTIVE', 'SUSPENDED', 'BANNED'],
-            default: "'PENDING'",
+            enumName: 'user_status_enum',
+            enum: Object.values(UserStatus),
+            default: `'${UserStatus.ACTIVE}'`,
           },
           {
             name: 'password',

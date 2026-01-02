@@ -1,5 +1,7 @@
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { BaseEntity } from '@my-workspace/shared-database';
+import { PlaylistPrivacy } from '@my-workspace/shared-common';
+import { UserOrmEntity } from '@my-workspace/user';
 
 @Entity('playlists')
 export class PlaylistOrmEntity extends BaseEntity {
@@ -12,7 +14,20 @@ export class PlaylistOrmEntity extends BaseEntity {
   @Column({ name: 'user_id' })
   userId!: string;
 
-  @Column({ name: 'is_public', default: false })
-  isPublic!: boolean;
-}
+  @Column({
+    type: 'enum',
+    enum: PlaylistPrivacy,
+    default: PlaylistPrivacy.PRIVATE,
+  })
+  privacy!: PlaylistPrivacy;
 
+  @Column({ name: 'is_active', default: true })
+  isActive!: boolean;
+
+  @Column({ type: 'varchar', nullable: true })
+  code?: string;
+
+  @ManyToOne(() => UserOrmEntity)
+  @JoinColumn({ name: 'user_id' })
+  user!: UserOrmEntity;
+}

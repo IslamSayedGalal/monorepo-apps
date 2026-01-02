@@ -1,21 +1,21 @@
+import { PlaylistPrivacy } from '@my-workspace/shared-common';
 import type { PlaylistName } from '../value-objects/playlist-name.vo';
 
 export interface PlaylistProps {
-  id?: string;
+  id?: number;
   name: PlaylistName;
   description?: string;
-  userId: string;
-  isPublic: boolean;
+  privacy?: PlaylistPrivacy;
+  userId: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 export class Playlist {
-  private readonly _id?: string;
+  private readonly _id?: number;
   private _name: PlaylistName;
   private _description?: string;
-  private readonly _userId: string;
-  private _isPublic: boolean;
+  private readonly _userId: number;
   private readonly _createdAt: Date;
   private _updatedAt: Date;
 
@@ -24,12 +24,11 @@ export class Playlist {
     this._name = props.name;
     this._description = props.description;
     this._userId = props.userId;
-    this._isPublic = props.isPublic;
     this._createdAt = props.createdAt || new Date();
     this._updatedAt = props.updatedAt || new Date();
   }
 
-  get id(): string | undefined {
+  get id(): number | undefined {
     return this._id;
   }
 
@@ -41,13 +40,10 @@ export class Playlist {
     return this._description;
   }
 
-  get userId(): string {
+  get userId(): number {
     return this._userId;
   }
 
-  get isPublic(): boolean {
-    return this._isPublic;
-  }
 
   get createdAt(): Date {
     return this._createdAt;
@@ -68,12 +64,10 @@ export class Playlist {
   }
 
   makePublic(): void {
-    this._isPublic = true;
     this._updatedAt = new Date();
   }
 
   makePrivate(): void {
-    this._isPublic = false;
     this._updatedAt = new Date();
   }
 

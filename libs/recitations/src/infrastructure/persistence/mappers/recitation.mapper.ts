@@ -23,7 +23,7 @@ export class RecitationMapper {
       actionDate: entity.actionDate,
       surahId: entity.surah?.id,
       riwayaId: entity.riwaya?.id,
-      userId: entity.user?.id ?? '',
+      userId: entity.user?.id,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
     });
@@ -33,7 +33,7 @@ export class RecitationMapper {
     const entity = new RecitationOrmEntity();
 
     if (domain.id) {
-      entity.id = domain.id;
+      entity.id = domain.id
     }
 
     entity.title = domain.title.value;
@@ -50,14 +50,20 @@ export class RecitationMapper {
     entity.actionDate = domain.actionDate;
 
     if (domain.surahId) {
-      entity.surah = { id: domain.surahId } as SurahOrmEntity;
+      entity.surah = {
+        id: domain.surahId
+      } as unknown as SurahOrmEntity;
     }
 
     if (domain.riwayaId) {
-      entity.riwaya = { id: domain.riwayaId } as RiwayaOrmEntity;
+      entity.riwaya = {
+        id: domain.riwayaId
+      } as unknown as RiwayaOrmEntity;
     }
 
-    entity.user = { id: domain.userId } as UserOrmEntity;
+    entity.user = {
+      id: domain.userId
+    } as unknown as UserOrmEntity;
 
     return entity;
   }

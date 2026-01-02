@@ -10,9 +10,5 @@ export class CreatePlaylistDto {
   @IsOptional()
   @MaxLength(500)
   description?: string;
-
-  @IsBoolean()
-  @IsOptional()
-  isPublic?: boolean = false;
 }
 

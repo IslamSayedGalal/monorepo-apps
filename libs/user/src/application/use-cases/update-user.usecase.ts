@@ -13,7 +13,7 @@ export class UpdateUserUseCase {
     private readonly userRepository: IUserRepository,
   ) {}
 
-  async execute(id: string, dto: UpdateUserDto): Promise<User> {
+  async execute(id: number, dto: UpdateUserDto): Promise<User> {
     const user = await this.userRepository.findById(id);
 
     if (!user) {
@@ -30,10 +30,6 @@ export class UpdateUserUseCase {
       bio: dto.bio,
       phoneNumber: dto.phoneNumber,
     });
-
-    if (dto.langKey) {
-      user.updateLanguage(dto.langKey);
-    }
 
     return this.userRepository.save(user);
   }

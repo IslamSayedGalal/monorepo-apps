@@ -2,9 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { databaseConfig, jwtConfig } from '@my-workspace/shared-common';
 import { DatabaseModule } from '@my-workspace/shared-database';
-import { PlaylistsModule } from '@my-workspace/playlists';
-import { RecitationsModule } from '@my-workspace/recitations';
-import { TagsModule } from '@my-workspace/tags';
 import { appConfig } from '../config/app.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -22,9 +19,6 @@ import { AppService } from './app.service';
       password: process.env['DB_PASSWORD'] || 'postgres',
       database: process.env['DB_DATABASE'] || 'app_db',
     })),
-    PlaylistsModule,
-    RecitationsModule,
-    TagsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

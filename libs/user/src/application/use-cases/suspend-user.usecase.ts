@@ -12,7 +12,7 @@ export class SuspendUserUseCase {
     private readonly userRepository: IUserRepository,
   ) {}
 
-  async execute(id: string): Promise<User> {
+  async execute(id: number): Promise<User> {
     const user = await this.userRepository.findById(id);
 
     if (!user) {

@@ -8,8 +8,7 @@ export class PlaylistMapper {
       id: entity.id,
       name: PlaylistName.create(entity.name),
       description: entity.description,
-      userId: entity.userId,
-      isPublic: entity.isPublic,
+      userId: Number(entity.userId),
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
     });
@@ -22,9 +21,7 @@ export class PlaylistMapper {
     }
     entity.name = domain.name.value;
     entity.description = domain.description;
-    entity.userId = domain.userId;
-    entity.isPublic = domain.isPublic;
+    entity.userId = String(domain.userId);
     return entity;
   }
 }
-

@@ -36,10 +36,8 @@ export class CreateUserUseCase {
       password: dto.password,
       firstName: dto.firstName,
       lastName: dto.lastName,
-      langKey: dto.langKey ?? 'en',
       provider: dto.provider ?? AuthProvider.EMAIL,
       firebaseUid: dto.firebaseUid,
-      googleId: dto.googleId,
       imageUrl: dto.imageUrl,
     });
 

@@ -1,12 +1,12 @@
+import { RecitationStatus } from '@my-workspace/shared-common';
 import { Recitation } from '../entities/recitation.entity';
-import { RecitationStatus } from '../enums/recitation-status.enum';
 
 export interface IRecitationRepository {
   // Find methods
-  findById(id: string): Promise<Recitation | null>;
-  findByUserId(userId: string): Promise<Recitation[]>;
-  findBySurahId(surahId: string): Promise<Recitation[]>;
-  findByRiwayaId(riwayaId: string): Promise<Recitation[]>;
+  findById(id: number): Promise<Recitation | null>;
+  findByUserId(userId: number): Promise<Recitation[]>;
+  findBySurahId(surahId: number): Promise<Recitation[]>;
+  findByRiwayaId(riwayaId: number): Promise<Recitation[]>;
   findByStatus(status: RecitationStatus): Promise<Recitation[]>;
   findAll(): Promise<Recitation[]>;
 
@@ -15,10 +15,10 @@ export interface IRecitationRepository {
 
   // Persistence
   save(recitation: Recitation): Promise<Recitation>;
-  delete(id: string): Promise<void>;
+  delete(id: number): Promise<void>;
 
   // Check existence
-  existsById(id: string): Promise<boolean>;
+  existsById(id: number): Promise<boolean>;
 }
 
 export const RECITATION_REPOSITORY = Symbol('IRecitationRepository');

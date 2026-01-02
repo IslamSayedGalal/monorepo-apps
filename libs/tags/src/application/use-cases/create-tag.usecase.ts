@@ -22,7 +22,6 @@ export class CreateTagUseCase {
     const tag = Tag.create({
       name: dto.name,
       description: dto.description,
-      color: dto.color,
     });
 
     return this.tagRepository.save(tag);

@@ -1,7 +1,3 @@
-// Presentation
-export * from './presentation/tags.module';
-export * from './presentation/controllers/tags.controller';
-
 // Application
 export * from './application/dto/create-tag.dto';
 export * from './application/dto/update-tag.dto';
@@ -14,4 +10,3 @@ export * from './domain/repositories/tag.repository';
 // Infrastructure
 export * from './infrastructure/persistence/typeorm/tag.orm-entity';
 export * from './infrastructure/persistence/tag.repository.impl';
-

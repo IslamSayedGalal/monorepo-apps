@@ -11,10 +11,10 @@ import { UserOrmEntity } from './typeorm/user.orm-entity';
 export class UserRepositoryImpl implements IUserRepository {
   constructor(
     @InjectRepository(UserOrmEntity)
-    private readonly repository: Repository<UserOrmEntity>,
+    private readonly repository: Repository<UserOrmEntity>
   ) {}
 
-  async findById(id: string): Promise<User | null> {
+  async findById(id: number): Promise<User | null> {
     const entity = await this.repository.findOne({ where: { id } });
     return entity ? UserMapper.toDomain(entity) : null;
   }
@@ -36,11 +36,6 @@ export class UserRepositoryImpl implements IUserRepository {
     return entity ? UserMapper.toDomain(entity) : null;
   }
 
-  async findByGoogleId(googleId: string): Promise<User | null> {
-    const entity = await this.repository.findOne({ where: { googleId } });
-    return entity ? UserMapper.toDomain(entity) : null;
-  }
-
   async findByStatus(status: UserStatus): Promise<User[]> {
     const entities = await this.repository.find({
       where: { status },
@@ -58,7 +53,7 @@ export class UserRepositoryImpl implements IUserRepository {
 
   async findPaginated(
     page: number,
-    limit: number,
+    limit: number
   ): Promise<{ data: User[]; total: number }> {
     const [entities, total] = await this.repository.findAndCount({
       skip: (page - 1) * limit,
@@ -78,11 +73,11 @@ export class UserRepositoryImpl implements IUserRepository {
     return UserMapper.toDomain(saved);
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: number): Promise<void> {
     await this.repository.softDelete(id);
   }
 
-  async existsById(id: string): Promise<boolean> {
+  async existsById(id: number): Promise<boolean> {
     const count = await this.repository.count({ where: { id } });
     return count > 0;
   }
@@ -99,4 +94,3 @@ export class UserRepositoryImpl implements IUserRepository {
     return count > 0;
   }
 }
-

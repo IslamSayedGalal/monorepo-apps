@@ -5,26 +5,31 @@ import { Playlist } from '../../domain/entities/playlist.entity';
 import { IPlaylistRepository } from '../../domain/repositories/playlist.repository';
 import { PlaylistOrmEntity } from './typeorm/playlist.orm-entity';
 import { PlaylistMapper } from '../mappers/playlist.mapper';
+import { PlaylistPrivacy } from '@my-workspace/shared-common';
 
 @Injectable()
 export class PlaylistRepositoryImpl implements IPlaylistRepository {
   constructor(
     @InjectRepository(PlaylistOrmEntity)
-    private readonly repository: Repository<PlaylistOrmEntity>,
-  ) { }
+    private readonly repository: Repository<PlaylistOrmEntity>
+  ) {}
 
-  async findById(id: string): Promise<Playlist | null> {
+  async findById(id: number): Promise<Playlist | null> {
     const entity = await this.repository.findOne({ where: { id } });
     return entity ? PlaylistMapper.toDomain(entity) : null;
   }
 
-  async findByUserId(userId: string): Promise<Playlist[]> {
-    const entities = await this.repository.find({ where: { userId } });
+  async findByUserId(userId: number): Promise<Playlist[]> {
+    const entities = await this.repository.find({
+      where: { user: { id: userId } },
+    });
     return entities.map(PlaylistMapper.toDomain);
   }
 
   async findPublic(): Promise<Playlist[]> {
-    const entities = await this.repository.find({ where: { isPublic: true } });
+    const entities = await this.repository.find({
+      where: { privacy: PlaylistPrivacy.PUBLIC },
+    });
     return entities.map(PlaylistMapper.toDomain);
   }
 
@@ -40,8 +45,7 @@ export class PlaylistRepositoryImpl implements IPlaylistRepository {
     return PlaylistMapper.toDomain(updated);
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: number): Promise<void> {
     await this.repository.softDelete(id);
   }
 }
-

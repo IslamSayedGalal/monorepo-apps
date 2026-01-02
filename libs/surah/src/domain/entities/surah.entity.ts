@@ -1,7 +1,7 @@
 import { SurahName } from '../value-objects/surah-name.vo';
 
 export interface SurahProps {
-  id?: string;
+  id?: number;
   name: SurahName;
   ayahsCount?: number;
   createdAt?: Date;
@@ -9,7 +9,7 @@ export interface SurahProps {
 }
 
 export class Surah {
-  private readonly _id?: string;
+  private readonly _id?: number;
   private _name: SurahName;
   private _ayahsCount?: number;
   private readonly _createdAt: Date;
@@ -27,7 +27,7 @@ export class Surah {
 
   // ============ Getters ============
 
-  get id(): string | undefined {
+  get id(): number | undefined {
     return this._id;
   }
 
@@ -82,7 +82,9 @@ export class Surah {
 
   // ============ Factory Methods ============
 
-  static create(props: Omit<SurahProps, 'id' | 'createdAt' | 'updatedAt'>): Surah {
+  static create(
+    props: Omit<SurahProps, 'id' | 'createdAt' | 'updatedAt'>
+  ): Surah {
     return new Surah(props);
   }
 
@@ -90,4 +92,3 @@ export class Surah {
     return new Surah(props);
   }
 }
-

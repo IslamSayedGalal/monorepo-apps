@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Recitation } from '../../domain/entities/recitation.entity';
-import { RecitationStatus } from '../../domain/enums/recitation-status.enum';
 import { IRecitationRepository } from '../../domain/repositories/recitation.repository';
 import { RecitationMapper } from './mappers/recitation.mapper';
 import { RecitationOrmEntity } from './typeorm/recitation.orm-entity';
+import { RecitationStatus } from '@my-workspace/shared-common';
 
 @Injectable()
 export class RecitationRepositoryImpl implements IRecitationRepository {
@@ -16,7 +16,7 @@ export class RecitationRepositoryImpl implements IRecitationRepository {
     private readonly repository: Repository<RecitationOrmEntity>,
   ) { }
 
-  async findById(id: string): Promise<Recitation | null> {
+  async findById(id: number): Promise<Recitation | null> {
     const entity = await this.repository.findOne({
       where: { id },
       relations: this.defaultRelations,
@@ -24,7 +24,7 @@ export class RecitationRepositoryImpl implements IRecitationRepository {
     return entity ? RecitationMapper.toDomain(entity) : null;
   }
 
-  async findByUserId(userId: string): Promise<Recitation[]> {
+  async findByUserId(userId: number): Promise<Recitation[]> {
     const entities = await this.repository.find({
       where: { user: { id: userId } },
       relations: this.defaultRelations,
@@ -33,7 +33,7 @@ export class RecitationRepositoryImpl implements IRecitationRepository {
     return RecitationMapper.toDomainList(entities);
   }
 
-  async findBySurahId(surahId: string): Promise<Recitation[]> {
+  async findBySurahId(surahId: number): Promise<Recitation[]> {
     const entities = await this.repository.find({
       where: { surah: { id: surahId } },
       relations: this.defaultRelations,
@@ -42,7 +42,7 @@ export class RecitationRepositoryImpl implements IRecitationRepository {
     return RecitationMapper.toDomainList(entities);
   }
 
-  async findByRiwayaId(riwayaId: string): Promise<Recitation[]> {
+  async findByRiwayaId(riwayaId: number): Promise<Recitation[]> {
     const entities = await this.repository.find({
       where: { riwaya: { id: riwayaId } },
       relations: this.defaultRelations,
@@ -93,11 +93,11 @@ export class RecitationRepositoryImpl implements IRecitationRepository {
     return reloaded!;
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: number): Promise<void> {
     await this.repository.softDelete(id);
   }
 
-  async existsById(id: string): Promise<boolean> {
+  async existsById(id: number): Promise<boolean> {
     const count = await this.repository.count({ where: { id } });
     return count > 0;
   }

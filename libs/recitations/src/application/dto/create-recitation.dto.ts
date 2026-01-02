@@ -50,14 +50,14 @@ export class CreateRecitationDto {
   @Min(0)
   size?: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  surahId?: string;
+  surahId?: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  riwayaId?: string;
+  riwayaId?: number;
 
-  @IsString()
-  userId!: string;
+  @IsNumber()
+  userId!: number;
 }

@@ -1,19 +1,17 @@
 export interface TagProps {
-  id?: string;
+  id?: number;
   name: string;
   slug: string;
   description?: string;
-  color?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 export class Tag {
-  private readonly _id?: string;
+  private readonly _id?: number;
   private _name: string;
   private _slug: string;
   private _description?: string;
-  private _color?: string;
   private readonly _createdAt: Date;
   private _updatedAt: Date;
 
@@ -22,12 +20,11 @@ export class Tag {
     this._name = props.name;
     this._slug = props.slug;
     this._description = props.description;
-    this._color = props.color;
     this._createdAt = props.createdAt || new Date();
     this._updatedAt = props.updatedAt || new Date();
   }
 
-  get id(): string | undefined {
+  get id(): number | undefined {
     return this._id;
   }
 
@@ -41,10 +38,6 @@ export class Tag {
 
   get description(): string | undefined {
     return this._description;
-  }
-
-  get color(): string | undefined {
-    return this._color;
   }
 
   get createdAt(): Date {
@@ -66,11 +59,6 @@ export class Tag {
     this._updatedAt = new Date();
   }
 
-  updateColor(color: string | undefined): void {
-    this._color = color;
-    this._updatedAt = new Date();
-  }
-
   static createSlug(name: string): string {
     return name
       .toLowerCase()
@@ -80,11 +68,12 @@ export class Tag {
       .replace(/^-+|-+$/g, '');
   }
 
-  static create(props: Omit<TagProps, 'id' | 'slug' | 'createdAt' | 'updatedAt'>): Tag {
+  static create(
+    props: Omit<TagProps, 'id' | 'slug' | 'createdAt' | 'updatedAt'>
+  ): Tag {
     return new Tag({
       ...props,
       slug: Tag.createSlug(props.name),
     });
   }
 }
-

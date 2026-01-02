@@ -3,7 +3,7 @@ import { BaseEntity } from '@my-workspace/shared-database';
 import { RiwayaOrmEntity } from '@my-workspace/riwaya';
 import { SurahOrmEntity } from '@my-workspace/surah';
 import { UserOrmEntity } from '@my-workspace/user';
-import { RecitationStatus } from '../../../domain/enums/recitation-status.enum';
+import { RecitationStatus } from '@my-workspace/shared-common';
 
 @Entity('recitations')
 export class RecitationOrmEntity extends BaseEntity {

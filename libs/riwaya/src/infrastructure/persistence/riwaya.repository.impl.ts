@@ -10,10 +10,10 @@ import { RiwayaOrmEntity } from './typeorm/riwaya.orm-entity';
 export class RiwayaRepositoryImpl implements IRiwayaRepository {
   constructor(
     @InjectRepository(RiwayaOrmEntity)
-    private readonly repository: Repository<RiwayaOrmEntity>,
+    private readonly repository: Repository<RiwayaOrmEntity>
   ) {}
 
-  async findById(id: string): Promise<Riwaya | null> {
+  async findById(id: number): Promise<Riwaya | null> {
     const entity = await this.repository.findOne({ where: { id } });
     return entity ? RiwayaMapper.toDomain(entity) : null;
   }
@@ -27,7 +27,7 @@ export class RiwayaRepositoryImpl implements IRiwayaRepository {
 
   async findPaginated(
     page: number,
-    limit: number,
+    limit: number
   ): Promise<{ data: Riwaya[]; total: number }> {
     const [entities, total] = await this.repository.findAndCount({
       skip: (page - 1) * limit,
@@ -47,13 +47,12 @@ export class RiwayaRepositoryImpl implements IRiwayaRepository {
     return RiwayaMapper.toDomain(saved);
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: number): Promise<void> {
     await this.repository.softDelete(id);
   }
 
-  async existsById(id: string): Promise<boolean> {
+  async existsById(id: number): Promise<boolean> {
     const count = await this.repository.count({ where: { id } });
     return count > 0;
   }
 }
-

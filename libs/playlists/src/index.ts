@@ -1,7 +1,3 @@
-// Presentation
-export * from './presentation/playlists.module';
-export * from './presentation/controllers/playlists.controller';
-
 // Application
 export * from './application/dto/create-playlist.dto';
 export * from './application/dto/update-playlist.dto';

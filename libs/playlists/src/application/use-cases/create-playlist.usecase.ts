@@ -21,7 +21,6 @@ export class CreatePlaylistUseCase {
       name,
       userId: command.userId,
       description: command.description,
-      isPublic: command.isPublic,
     });
 
     return this.playlistRepository.save(playlist);
