@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@my-workspace/shared-dtos": ["libs/shared-dtos/src/index.ts"],
+      "@my-workspace/shared-services": ["libs/shared-services/src/index.ts"],
+      "@my-workspace/shared-common": ["libs/shared/common/src/index.ts"],
+      "@my-workspace/shared-database": ["libs/shared/database/src/index.ts"],
+      "@my-workspace/playlists": ["libs/playlists/src/index.ts"],
+      "@my-workspace/recitations": ["libs/recitations/src/index.ts"],
+      "@my-workspace/tags": ["libs/tags/src/index.ts"],
+      "@my-workspace/riwaya": ["libs/riwaya/src/index.ts"],
+      "@my-workspace/surah": ["libs/surah/src/index.ts"],
+      "@my-workspace/user": ["libs/user/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "shared-database",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/database/src",
+  "projectType": "library",
+  "tags": ["scope:shared"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/database",
+        "tsConfig": "libs/shared/database/tsconfig.lib.json",
+        "packageJson": "libs/shared/database/package.json",
+        "main": "libs/shared/database/src/index.ts",
+        "assets": ["libs/shared/database/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/shared/database/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/database/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

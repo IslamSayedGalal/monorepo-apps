@@ -1,0 +1,33 @@
+{
+  "name": "playlists",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/playlists/src",
+  "projectType": "library",
+  "tags": ["scope:playlists", "type:feature"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/playlists",
+        "tsConfig": "libs/playlists/tsconfig.lib.json",
+        "packageJson": "libs/playlists/package.json",
+        "main": "libs/playlists/src/index.ts",
+        "assets": ["libs/playlists/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/playlists/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/playlists/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

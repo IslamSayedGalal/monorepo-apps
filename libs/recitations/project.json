@@ -1,0 +1,33 @@
+{
+  "name": "recitations",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/recitations/src",
+  "projectType": "library",
+  "tags": ["scope:recitations", "type:feature"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/recitations",
+        "tsConfig": "libs/recitations/tsconfig.lib.json",
+        "packageJson": "libs/recitations/package.json",
+        "main": "libs/recitations/src/index.ts",
+        "assets": ["libs/recitations/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/recitations/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/recitations/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

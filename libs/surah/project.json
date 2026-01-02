@@ -1,0 +1,34 @@
+{
+  "name": "surah",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/surah/src",
+  "projectType": "library",
+  "tags": ["scope:surah", "type:feature"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/surah",
+        "tsConfig": "libs/surah/tsconfig.lib.json",
+        "packageJson": "libs/surah/package.json",
+        "main": "libs/surah/src/index.ts",
+        "assets": ["libs/surah/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/surah/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/surah/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
+

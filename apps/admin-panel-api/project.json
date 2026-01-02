@@ -1,0 +1,37 @@
+{
+  "name": "admin-panel-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/admin-panel-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/admin-panel-api",
+        "command": "tsc -p tsconfig.app.json"
+      },
+      "outputs": ["{workspaceRoot}/dist/apps/admin-panel-api"]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/admin-panel-api",
+        "command": "ts-node --project tsconfig.app.json -r tsconfig-paths/register src/main.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/admin-panel-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/admin-panel-api/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

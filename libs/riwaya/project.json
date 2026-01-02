@@ -1,0 +1,34 @@
+{
+  "name": "riwaya",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/riwaya/src",
+  "projectType": "library",
+  "tags": ["scope:riwaya", "type:feature"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/riwaya",
+        "tsConfig": "libs/riwaya/tsconfig.lib.json",
+        "packageJson": "libs/riwaya/package.json",
+        "main": "libs/riwaya/src/index.ts",
+        "assets": ["libs/riwaya/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/riwaya/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/riwaya/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
+

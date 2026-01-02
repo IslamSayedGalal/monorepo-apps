@@ -1,0 +1,26 @@
+{
+  "sqltools.connections": [
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "PostgresqlConnection",
+      "database": "my-workspace",
+      "username": "postgres",
+      "password": "123123"
+    },
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "postgresqlConnection",
+      "database": "app_db",
+      "username": "postgres",
+      "password": "123123"
+    }
+  ]
+}
