@@ -27,21 +27,21 @@ export class PlaylistController {
     return this.playlistService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.playlistService.findOne(id);
+  @Get(':playlistId')
+  findOne(@Param('playlistId', ParseIntPipe) playlistId: number) {
+    return this.playlistService.findOne(playlistId);
   }
 
-  @Patch(':id')
+  @Patch(':playlistId')
   update(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('playlistId', ParseIntPipe) playlistId: number,
     @Body() updatePlaylistDto: UpdatePlaylistDto
   ) {
-    return this.playlistService.update(id, updatePlaylistDto);
+    return this.playlistService.update(playlistId, updatePlaylistDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.playlistService.remove(id);
+  @Delete(':playlistId')
+  remove(@Param('playlistId', ParseIntPipe) playlistId: number) {
+    return this.playlistService.remove(playlistId);
   }
 }

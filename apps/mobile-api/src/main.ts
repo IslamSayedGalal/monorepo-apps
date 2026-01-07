@@ -9,7 +9,7 @@ async function bootstrap() {
   const logger = new Logger('MobileAPI');
 
   const port = configService.get<number>('app.port') || 3003;
-  const prefix = configService.get<string>('app.prefix') || 'api/v1';
+  const prefix = configService.get<string>('app.prefix') || 'api/mobile';
   const cors = configService.get('app.cors');
 
   app.setGlobalPrefix(prefix);
@@ -19,7 +19,7 @@ async function bootstrap() {
       whitelist: true,
       transform: true,
       forbidNonWhitelisted: true,
-    }),
+    })
   );
 
   app.enableCors(cors);

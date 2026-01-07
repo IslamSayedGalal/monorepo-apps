@@ -15,32 +15,32 @@ import { CreateTagDto, UpdateTagDto } from '@my-workspace/tags';
 export class TagsController {
   constructor(private readonly tagsService: TagsService) {}
 
-  @Post()
+  @Post('/')
   create(@Body() createTagDto: CreateTagDto) {
     return this.tagsService.create(createTagDto);
   }
 
-  @Get()
+  @Get('/')
   findAll() {
     return this.tagsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.tagsService.findOne(id);
+  @Get('/:tagId')
+  findOne(@Param('tagId', ParseIntPipe) tagId: number) {
+    return this.tagsService.findOne(tagId);
   }
 
-  @Patch(':id')
+  @Patch('/:tagId')
   update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() updateTagDto: UpdateTagDto,
+    @Param('tagId', ParseIntPipe) tagId: number,
+    @Body() updateTagDto: UpdateTagDto
   ) {
-    return this.tagsService.update(id, updateTagDto);
+    return this.tagsService.update(tagId, updateTagDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.tagsService.remove(id);
+  @Delete('/:tagId')
+  remove(@Param('tagId', ParseIntPipe) tagId: number) {
+    return this.tagsService.remove(tagId);
   }
 }
 

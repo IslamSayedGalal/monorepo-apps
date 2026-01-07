@@ -65,7 +65,10 @@ export class TagRepositoryImpl implements ITagRepository {
       entity.id = domain.id;
     }
     entity.name = domain.name;
-    entity.slug = domain.slug;
+    // Let database triggers generate slug and code
+    // Set to empty string so triggers will generate them
+    entity.slug = '';
+    entity.code = '';
     entity.description = domain.description;
     return entity;
   }
