@@ -9,7 +9,7 @@ export interface DatabaseConfig {
 }
 
 export const createTypeOrmConfig = (
-  config: DatabaseConfig,
+  config: DatabaseConfig
 ): TypeOrmModuleOptions => ({
   type: 'postgres',
   host: config.host,
@@ -17,7 +17,7 @@ export const createTypeOrmConfig = (
   username: config.username,
   password: config.password,
   database: config.database,
-  synchronize: process.env['NODE_ENV'] !== 'production',
-  logging: process.env['NODE_ENV'] === 'development',
+  synchronize: false, // Disabled - use migrations instead
+  logging: false, // Disabled - use custom logging interceptor instead
   autoLoadEntities: true,
 });

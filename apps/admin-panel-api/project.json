@@ -16,7 +16,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/admin-panel-api",
-        "command": "ts-node --project tsconfig.app.json -r tsconfig-paths/register src/main.ts"
+        "command": "nodemon"
       }
     },
     "lint": {

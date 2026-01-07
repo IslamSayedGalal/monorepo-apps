@@ -9,10 +9,10 @@ export class UserOrmEntity extends BaseEntity {
   @Column({ unique: true })
   login!: string;
 
-  @Column({ nullable: true })
+  @Column({ name: 'first_name', nullable: true })
   firstName?: string;
 
-  @Column({ nullable: true })
+  @Column({ name: 'last_name', nullable: true })
   lastName?: string;
 
   @Column({ unique: true })
@@ -25,7 +25,7 @@ export class UserOrmEntity extends BaseEntity {
   @Exclude()
   password?: string;
 
-  @Column({ nullable: true })
+  @Column({ name: 'image_url', nullable: true })
   imageUrl?: string;
 
   @Column({ name: 'cover_url', nullable: true })
@@ -40,7 +40,7 @@ export class UserOrmEntity extends BaseEntity {
   @Column({ name: 'bio', type: 'text', nullable: true })
   bio?: string;
 
-  @Column({ nullable: true })
+  @Column({ name: 'phone_number', nullable: true })
   phoneNumber?: string;
 
   @Column({ type: 'simple-enum', enum: AuthProvider, default: AuthProvider.EMAIL })

@@ -1,4 +1,10 @@
-import { IsString, IsBoolean, IsOptional, MaxLength, MinLength } from 'class-validator';
+import {
+  IsString,
+  IsBoolean,
+  IsOptional,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
 export class CreatePlaylistDto {
   @IsString()
@@ -11,4 +17,3 @@ export class CreatePlaylistDto {
   @MaxLength(500)
   description?: string;
 }
-

@@ -1,7 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AppModule } from './app/app.module';
+import { AppModule } from './app.module';
+import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,13 +20,18 @@ async function bootstrap() {
       whitelist: true,
       transform: true,
       forbidNonWhitelisted: true,
-    }),
+    })
   );
+
+  // Enable request logging
+  app.useGlobalInterceptors(new LoggingInterceptor());
 
   app.enableCors(cors);
 
   await app.listen(port);
-  logger.log(`🚀 Admin Panel API running on: http://localhost:${port}/${prefix}`);
+  logger.log(
+    `🚀 Admin Panel API running on: http://localhost:${port}/${prefix}`
+  );
 }
 
 bootstrap();

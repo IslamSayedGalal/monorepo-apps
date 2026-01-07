@@ -8,6 +8,9 @@ export class PlaylistOrmEntity extends BaseEntity {
   @Column({ length: 100 })
   name!: string;
 
+  @Column({ length: 200, unique: true })
+  slug!: string;
+
   @Column({ type: 'text', nullable: true })
   description?: string;
 

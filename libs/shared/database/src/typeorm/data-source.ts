@@ -13,7 +13,7 @@ export const dataSourceOptions: DataSourceOptions & SeederOptions = {
   password: process.env['DB_PASSWORD'] || 'password',
   database: process.env['DB_DATABASE'] || 'mydb',
   synchronize: false,
-  logging: true,
+  logging: false, // Disable query logging - only show migration statistics
   migrations: ['libs/shared/database/src/migrations/*.ts'],
   entities: ['libs/shared/database/src/entities/*.orm-entity.ts'],
   seeds: ['libs/shared/database/src/seeds/*.seed.ts'],
