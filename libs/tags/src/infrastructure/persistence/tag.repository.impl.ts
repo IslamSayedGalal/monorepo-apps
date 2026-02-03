@@ -54,6 +54,7 @@ export class TagRepositoryImpl implements ITagRepository {
       name: entity.name,
       slug: entity.slug,
       description: entity.description,
+      color: entity.color,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
     });
@@ -70,6 +71,7 @@ export class TagRepositoryImpl implements ITagRepository {
     entity.slug = '';
     entity.code = '';
     entity.description = domain.description;
+    entity.color = domain.color;
     return entity;
   }
 }

@@ -19,6 +19,7 @@ export class TagsService {
     const tag = Tag.create({
       name: createTagDto.name,
       description: createTagDto.description,
+      color: createTagDto.color,
     });
 
     // Save using repository (automatically within transaction)
@@ -66,6 +67,10 @@ export class TagsService {
 
     if (updateTagDto.description !== undefined) {
       tag.updateDescription(updateTagDto.description);
+    }
+
+    if (updateTagDto.color !== undefined) {
+      tag.updateColor(updateTagDto.color);
     }
 
     // Save using repository (automatically within transaction)

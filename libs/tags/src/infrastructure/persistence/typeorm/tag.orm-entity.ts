@@ -13,6 +13,9 @@ export class TagOrmEntity extends BaseEntity {
   @Column({ name: 'description', type: 'text', nullable: true })
   description?: string;
 
+  @Column({ name: 'color', length: 7, nullable: true })
+  color?: string;
+
   @Index({ unique: true })
   @Column({ name: 'code', length: 50 })
   code!: string;

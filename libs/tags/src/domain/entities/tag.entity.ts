@@ -3,6 +3,7 @@ export interface TagProps {
   name: string;
   slug: string;
   description?: string;
+  color?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -12,6 +13,7 @@ export class Tag {
   private _name: string;
   private _slug: string;
   private _description?: string;
+  private _color?: string;
   private readonly _createdAt: Date;
   private _updatedAt: Date;
 
@@ -20,6 +22,7 @@ export class Tag {
     this._name = props.name;
     this._slug = props.slug;
     this._description = props.description;
+    this._color = props.color;
     this._createdAt = props.createdAt || new Date();
     this._updatedAt = props.updatedAt || new Date();
   }
@@ -40,6 +43,10 @@ export class Tag {
     return this._description;
   }
 
+  get color(): string | undefined {
+    return this._color;
+  }
+
   get createdAt(): Date {
     return this._createdAt;
   }
@@ -56,6 +63,11 @@ export class Tag {
 
   updateDescription(description: string | undefined): void {
     this._description = description;
+    this._updatedAt = new Date();
+  }
+
+  updateColor(color: string | undefined): void {
+    this._color = color;
     this._updatedAt = new Date();
   }
 

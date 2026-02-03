@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   ParseIntPipe,
+  Headers,
+  BadRequestException,
 } from '@nestjs/common';
 import { PlaylistService } from './playlist.service';
 import { CreatePlaylistDto, UpdatePlaylistDto } from '@my-workspace/playlists';
@@ -16,9 +18,18 @@ export class PlaylistController {
   constructor(private readonly playlistService: PlaylistService) {}
 
   @Post()
-  create(@Body() createPlaylistDto: CreatePlaylistDto) {
+  create(
+    @Body() createPlaylistDto: CreatePlaylistDto,
+    @Headers('x-user-id') userIdHeader?: string
+  ) {
     // TODO: Get userId from authenticated user
-    const userId = 3; // Placeholder
+    // For now, accept from header for testing, or use placeholder
+    const userId = userIdHeader ? parseInt(userIdHeader, 10) : 3;
+    
+    if (isNaN(userId)) {
+      throw new BadRequestException('Invalid user ID');
+    }
+    
     return this.playlistService.create(createPlaylistDto, userId);
   }
 
